@@ -62,9 +62,20 @@ module.exports = {
   },
 
   // Listagem de todos os produtos sem filtros
-  async index(req, res) {
+  async index_all(req, res) {
     try {
       const data = await Produto.find({});
+
+      return res.json(data);
+    } catch (err) {
+      return res.status(400).send({ error: 'Listagem de produto falhou' });
+    }
+  },
+
+  // Listagem de produto especifico através do id
+  async index(req, res) {
+    try {
+      const data = await Produto.find({ _id: req.params.id });
 
       return res.json(data);
     } catch (err) {

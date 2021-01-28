@@ -1,40 +1,61 @@
-<h1>Backend Analyst Candidate Testing</h1>
+<h1>Candidato: Caio Vinicius Messias</h1>
 
-Hello dear developer, in this test we will analyze your general knowledge and even speed of development. Below we will explain everything that will be needed.
-Do not be alarmed, we do not expect everyone to be able to complete all tasks, this test is the same presented for candidates of all experience levels, so do what you can without worry.
+<h2>Observações</h2>
 
-<strong>The challenge</strong>
+Após baixar o projeto deve ser executado o seguinte comando:
+- npm install
 
-Your challenge is to develop an API, using Node.JS, for a product catalog management application. Thus, you must analyze and convert the user stories below into routes of an application.
- 
-<strong>User stories:</strong>
+A API foi desenvolvida utilizando o MongoDB portanto será necessário alterar a url de conexão configurada no seguinte caminho do projeto:
+\src\database\config.js
 
-- As a user I would like to register a product so that I can have access to the data of this product in the future (Title, description, price, category)
-- I as a user would like to be able to associate and edit a product category;
-- As a user I would like to be able to access the list of all products;
-- As a user I would like to be able to filter products by name or category;
-- I as a user would like to be able to update the product data;
-- I as a user would like to be able to delete a product from my catalog;
- 
-<strong>Instructions</strong>
-- <strong>To start the test, <strong>fork</strong> this repository, create a branch with its full name and then and send us the link to the test performed (link to your repository) . If you just clone the repository you will not be able to push and then it will be more complicated to make the pull request.</strong>
-- The choice of libraries, databases, architecture, etc. is at your discretion.
-- Change the README file explaining what it takes to run your application.
-- Paste the branch name into the GUPY system and indicate the completion of the test
-- If you want you can leave us feedback regarding the test
+Durante o meu desenvolvimento criei uma base local com o nome de "anotaai", a conexão está sendo apontada para ela.
 
- 
-<strong>Our analysis</strong>
-- Knowledge of Javascript, NodeJs, Express will be assessed for this position;
-- We'll look at how you structure the:
-  application layers;
-  outgoing calls,
-  environment variables,
-   cache,
-  unit tests,
-  logs;
-  error handling;
-  documentation.
-- Code organization, module separation, readability and comments.
-- Commit history.
-- The use of MongoDB is a differentiator
+Neste projeto optei por utilizar o padrão MVC pois é um padrão que estou mais familiarizado.
+
+Foram realizados testes manuais com o uso da ferramente Insomnia.
+
+<h2>Instruções/Documentação</h2>
+
+Rotas: 
+
+<h3>Produto(s)</h3>
+<strong>POST</strong>: <i>/produto</i> - Realiza o cadastro de um produto
+<i>Necessário informar no body via JSON os campos titulo, descricao e preco. Pode ser informado o id_categoria. </i>
+
+<strong>GET</strong>: <i>/produto/:id</i> - Retorna um produto filtrado pelo id
+<i>Necessario informar o id do produto via Params na URL</i>
+
+<strong>GET</strong>: <i>/produtos</i> - Retorna todos os produtos cadastrados 
+<i>Não é necessario informar parametros ou corpo</i>
+
+<strong>GET</strong>: <i>/produtos/filtro/produto</i> - Retorna os produtos filtrados pelo titulo do produto
+<i>Necessario informar no body via JSON o campo titulo</i>
+
+<strong>GET</strong>: <i>/produtos/filtro/categoria</i> - Retorna os produtos filtrados pelo titulo ou id da categoria
+<i>Necessario informar no body via JSON o campo titulo da categoria ou id</i>
+
+<strong>PUT</strong>: <i>/produto/:id</i> - Atualiza um produto especifico
+<i>Necessario informar o id via Params na URL e os campos que deseja atualizar no corpo via JSON</i>
+
+<strong>PUT</strong>: <i>/produto/categoria/:id</i> - Atualiza a categoria do produto
+<i>Necessario informar o id do produto via Params na URL e o id_categoria que deseja atualizar no corpo via JSON</i>
+
+<strong>DEL</strong>: <i>/produto/:id</i> - Realiza a exclusão do produto
+<i>Necessario informar o id do produto via Params na URL</i>
+
+
+<h3>Categoria(s)</h3>
+<strong>POST</strong>: <i>/categoria</i> - Realiza o cadastro de uma categoria
+<i>Necessário informar no body via JSON o campo titulo </i>
+
+<strong>GET</strong>: <i>/categoria/:id</i> - Retorna uma categoria filtrada pelo id
+<i>Necessario informar o id do produto via Params na URL</i>
+
+<strong>GET</strong>: <i>/categorias</i> - Retorna todas as categorias cadastradas
+<i>Não é necessario informar parametros ou corpo</i>
+
+<strong>PUT</strong>: <i>/categoria/:id</i> - Atualização da categoria
+<i>Necessario informar o id da categoria via Params na URL e os campos que deseja atualizar no corpo via JSON</i>
+
+<strong>DEL</strong>: <i>/categoria/:id</i> - Realiza a exclusão do produto
+<i>Necessario informar o id do produto via Params na URL</i>

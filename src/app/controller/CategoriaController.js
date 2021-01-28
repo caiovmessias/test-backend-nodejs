@@ -13,13 +13,24 @@ module.exports = {
   },
 
   // Listagem de todas as categorias
-  async index(req, res) {
+  async index_all(req, res) {
     try {
       const data = await Categoria.find({});
 
       return res.json(data);
     } catch (err) {
       return res.status(400).send({ error: 'Listagem de categorias falhou' });
+    }
+  },
+
+  // Listagem de produto especifico através do id
+  async index(req, res) {
+    try {
+      const data = await Categoria.find({ _id: req.params.id });
+
+      return res.json(data);
+    } catch (err) {
+      return res.status(400).send({ error: 'Listagem de categoria falhou' });
     }
   },
 
